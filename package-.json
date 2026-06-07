@@ -1,0 +1,23 @@
+{
+  "name": "bottemplate",
+  "version": "1.0.0",
+  "description": "A simple Discord bot template built entirely with discord.js v14 and designed to work fully with slash commands.",
+  "keywords": [
+    "bot",
+    "slash-commands",
+    "discord-bot",
+    "v14"
+  ],
+  "license": "MIT",
+  "author": "devsparok",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "discord.js": "^14.26.4",
+    "dotenv": "^17.4.2"
+  }
+}

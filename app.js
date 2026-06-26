@@ -1,7 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const process = require('node:process');
-const dotenv = require('dotenv');
 const {
   Client,
   Collection,
@@ -11,13 +10,11 @@ const {
 } = require('discord.js');
 
 const registerEvents = require('./src/handlers/eventHandler');
-
-dotenv.config({ path: path.join(__dirname, '.env') });
-
 const config = {
-  token: process.env.DISCORD_TOKEN ?? process.env.TOKEN ?? '',
-  clientId: process.env.DISCORD_CLIENT_ID ?? process.env.CLIENT_ID ?? '',
-  developerId: process.env.DEVELOPER_ID ?? '',
+  token: '',
+  clientId: '',
+  developerId: '',
+  ...require(path.join(__dirname, 'config.json')),
 };
 
 const client = new Client({
@@ -33,7 +30,7 @@ function log(scope, message) {
 
 function ensureRequiredConfig() {
   if (!config.token || !config.clientId) {
-    throw new Error('The DISCORD_TOKEN/TOKEN and DISCORD_CLIENT_ID/CLIENT_ID values must be set in .env.');
+    throw new Error('The token and clientId values must be set in config.json.');
   }
 }
 
